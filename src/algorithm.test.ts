@@ -5,27 +5,30 @@ describe("decisionTree", () => {
     const permutable = [1, 2, 3];
     const result = decisionTree({
       permutable,
-      scoreDecisions: (decisions) => {
-        const result = decisions.map(
-          (decision) => permutable[decision.originalIndex]
-        );
-        return result.reduce(
-          (accumulator, currentValue) => accumulator - currentValue
-        );
-      },
-      shouldKeepBranch: (decisions) => {
-        const result = decisions.map(
-          (decision) => permutable[decision.originalIndex]
-        );
-        return (
-          result.reduce((previousValue, currentValue) => {
-            return previousValue - currentValue;
-          }) >= 0
-        );
-      },
-      areBranchesEquivalent: () => false,
+      shouldKeepBranch: (contents) =>
+        contents.reduce(
+          (previousValue, currentValue) => previousValue - currentValue
+        ) >= 0,
     });
-    expect(result).toStrictEqual([[3, 2, 1]]);
+    expect(result).toStrictEqual([
+      [3, 1, 2],
+      [3, 2, 1],
+    ]);
   });
-  it.todo("should should produce every permutation which");
+  it("should should produce every unique permutation", () => {
+    const permutable = [1, 2, 2, 2, 2];
+    const result = decisionTree({
+      permutable,
+      areBranchesEquivalent: (first, second) =>
+        first.length === second.length &&
+        first.every((firstElement, index) => second[index] === firstElement),
+    });
+    expect(result).toStrictEqual([
+      [1, 2, 2, 2, 2],
+      [2, 1, 2, 2, 2],
+      [2, 2, 1, 2, 2],
+      [2, 2, 2, 1, 2],
+      [2, 2, 2, 2, 1],
+    ]);
+  });
 });

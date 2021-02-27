@@ -1,11 +1,3 @@
-import {
-  Listing,
-  PeopleGroup,
-  ListingArrangement,
-  Person,
-  BedArrangement,
-} from "./types";
-import { permutator } from "./utils";
 import { v4 as uuidv4 } from "uuid";
 import uniqueWith from "lodash.uniqwith";
 
@@ -28,29 +20,17 @@ export interface Decision {
   isGrowthPoint: boolean;
 }
 
-export const decisionTree = <
-  PermutableMember extends unknown
-  // Environment extends unknown
->({
+export const decisionTree = <PermutableMember extends unknown>({
   areBranchesEquivalent,
-  // environment,
   permutable,
   shouldKeepBranch,
-  scoreDecisions,
 }: {
   permutable: PermutableMember[];
-  // environment: Environment;
-  // buildResult: (decisions: Decision[], environment: Environment) => PermutableMember[];
-  shouldKeepBranch: (
-    decisions: Decision[]
-    // environment: Environment
+  shouldKeepBranch?: (branchContents: PermutableMember[]) => boolean;
+  areBranchesEquivalent?: (
+    firstBranchContents: PermutableMember[],
+    secondBranchContents: PermutableMember[]
   ) => boolean;
-  areBranchesEquivalent: (
-    firstBranchDecisions: Decision[],
-    secondBranchDecisions: Decision[]
-    // environment: Environment
-  ) => boolean;
-  scoreDecisions: (decisions: Decision[]) => number;
 }): PermutableMember[][] => {
   let decisions: Decision[] = [];
   permutable.forEach((member, index) => {
@@ -81,6 +61,8 @@ export const decisionTree = <
     }
     return branch.reverse();
   };
+  const getBranchDecisionContents = (branch: Decision[]): PermutableMember[] =>
+    branch.map((decision) => permutable[decision.originalIndex]);
   const pruneBranchByTip = (tip: Decision): void => {
     decisions = decisions.filter((decision) => decision.id !== tip.id);
     if (tip.parent !== "root") {
@@ -93,30 +75,38 @@ export const decisionTree = <
     }
   };
   const findAndDestroyDuplicateBranches = () => {
-    const tips = getTips();
-    const branches = tips.map((tip) => getBranch(tip));
-    const uniqueBranches: Decision[][] = uniqueWith(
-      branches,
-      areBranchesEquivalent
-    );
-    const uniqueTips = uniqueBranches.map(
-      (branch) => branch[branch.length - 1]
-    );
-    const tipsOfDuplicateBranches = tips.filter(
-      (tip) => !uniqueTips.some((uniqueTip) => uniqueTip.id === tip.id)
-    );
-    tipsOfDuplicateBranches.forEach(pruneBranchByTip);
+    if (areBranchesEquivalent) {
+      const tips = getTips();
+      const branches = tips.map((tip) => getBranch(tip));
+      const uniqueBranches: Decision[][] = uniqueWith(
+        branches,
+        (firstBranch, secondBranch) =>
+          areBranchesEquivalent(
+            getBranchDecisionContents(firstBranch),
+            getBranchDecisionContents(secondBranch)
+          )
+      );
+      const uniqueTips = uniqueBranches.map(
+        (branch) => branch[branch.length - 1]
+      );
+      const tipsOfDuplicateBranches = tips.filter(
+        (tip) => !uniqueTips.some((uniqueTip) => uniqueTip.id === tip.id)
+      );
+      tipsOfDuplicateBranches.forEach(pruneBranchByTip);
+    }
   };
   const findAndDestroyInvalidBranches = () => {
-    const tips = getTips();
-    const branches = tips.map((tip) => getBranch(tip));
-    const invalidBranches: Decision[][] = branches.filter(
-      (branch) => !shouldKeepBranch(branch)
-    );
-    const tipsOfInvalidBranches = invalidBranches.map(
-      (branch) => branch[branch.length - 1]
-    );
-    tipsOfInvalidBranches.forEach(pruneBranchByTip);
+    if (shouldKeepBranch) {
+      const tips = getTips();
+      const branches = tips.map((tip) => getBranch(tip));
+      const invalidBranches: Decision[][] = branches.filter(
+        (branch) => !shouldKeepBranch(getBranchDecisionContents(branch))
+      );
+      const tipsOfInvalidBranches = invalidBranches.map(
+        (branch) => branch[branch.length - 1]
+      );
+      tipsOfInvalidBranches.forEach(pruneBranchByTip);
+    }
   };
   const growTip = (tip: Decision): void => {
     const branch = getBranch(tip);
@@ -149,63 +139,7 @@ export const decisionTree = <
       break;
     }
   }
-  console.log(decisions);
-  return [permutable.reverse()];
+  const tips = getTips();
+  const branches = tips.map(getBranch);
+  return branches.map(getBranchDecisionContents);
 };
-
-const getNumberOfBeds = (listingArrangements: ListingArrangement[]): number =>
-  listingArrangements.reduce(
-    (count, ListingArrangement) =>
-      count +
-      ListingArrangement.listing.buildings.reduce(
-        (count, building) =>
-          count +
-          building.floors.reduce(
-            (count, floor) =>
-              count +
-              floor.rooms.reduce((count, room) => count + room.beds.length, 0),
-            0
-          ),
-        0
-      ),
-    0
-  );
-
-const getNthBed = (
-  n: number,
-  listingArrangements: ListingArrangement[]
-): BedArrangement | undefined => {
-  let i = 0;
-  let result: BedArrangement | undefined = undefined;
-  listingArrangements.forEach((listingArrangement) => {
-    listingArrangement.buildingArragements.forEach((buildingArrangement) => {
-      buildingArrangement.floorArrangements.forEach((floorArrangement) => {
-        floorArrangement.roomArrangements.forEach((roomArrangement) => {
-          roomArrangement.bedArrangements.forEach((bedArrangement) => {
-            if (n === i) {
-              result = bedArrangement;
-            }
-            i++;
-          });
-        });
-      });
-    });
-  });
-  return result;
-};
-
-// const getAllPossibleListingArrangementGroups = (
-//   person: Person,
-//   listings: ListingArrangement[]
-// ): ListingArrangement[][] => {};
-
-// export const fillListing = (
-//   group: PeopleGroup,
-//   listings: Listing[]
-// ): ListingArrangement[] => {
-//   const allPeople = group.people.concat(
-//     group.families.flatMap((family) =>
-//       [family.couple.husband, family.couple.wife].concat(family.children)
-//     )
-//   );
-// };
