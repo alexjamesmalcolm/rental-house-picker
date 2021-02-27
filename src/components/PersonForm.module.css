@@ -1,0 +1,8 @@
+.container {
+  display: grid;
+  grid-template-columns: max-content max-content;
+}
+
+.labelSet {
+  display: contents;
+}
