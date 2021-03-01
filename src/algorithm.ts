@@ -32,6 +32,7 @@ export const decisionTree = <PermutableMember extends unknown>({
     secondBranchContents: PermutableMember[]
   ) => boolean;
 }): PermutableMember[][] => {
+  if (permutable.length === 0) return [];
   let decisions: Decision[] = [];
   permutable.forEach((member, index) => {
     decisions.push({
@@ -117,9 +118,9 @@ export const decisionTree = <PermutableMember extends unknown>({
     unusedIndexes.forEach((unusedIndex) => {
       decisions.push({
         id: uuidv4(),
-        isGrowthPoint: true,
         originalIndex: unusedIndex,
         parent: tip.id,
+        isGrowthPoint: true,
       });
     });
     tip.isGrowthPoint = false;

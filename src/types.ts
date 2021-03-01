@@ -4,7 +4,7 @@ export interface Listing {
 }
 
 export interface ListingArrangement {
-  buildingArragements: BuildingArrangement[];
+  buildingArrangements: BuildingArrangement[];
   listing: Listing;
 }
 
@@ -12,7 +12,7 @@ export interface Building {
   floors: Floor[];
 }
 
-interface BuildingArrangement {
+export interface BuildingArrangement {
   floorArrangements: FloorArrangement[];
 }
 
@@ -20,7 +20,7 @@ export interface Floor {
   rooms: Room[];
 }
 
-interface FloorArrangement {
+export interface FloorArrangement {
   roomArrangements: RoomArrangement[];
 }
 
@@ -28,7 +28,7 @@ export interface Room {
   beds: Bed[];
 }
 
-interface RoomArrangement {
+export interface RoomArrangement {
   bedArrangements: BedArrangement[];
 }
 
