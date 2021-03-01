@@ -96,10 +96,16 @@ const getBedOfNthSpot = (
   bedArrangements: BedArrangement[]
 ): BedArrangement | undefined => {
   const foundBed = bedArrangements.find((bedArrangement, index) => {
-    const previousBeds = bedArrangements.slice(0, index);
-    const currentSpotCount = previousBeds.reduce((count, bed) => {
-      return count + getSpotCountOfBed(bed);
-    }, 0);
+    const currentSpotCount = bedArrangements.reduce(
+      (count, bedArrangement, innerIndex) => {
+        if (innerIndex < index) {
+          return count + getSpotCountOfBed(bedArrangement);
+        } else {
+          return count;
+        }
+      },
+      0
+    );
     if (currentSpotCount === n) {
       return true;
     }
@@ -111,6 +117,14 @@ const getBedOfNthSpot = (
   });
   return foundBed;
 };
+
+// const getBedOfNthSpotCache = (bedArrangements: BedArrangement[]) => {
+//   const nthSpotToIndexCache: number[] = [];
+//   return (
+//     n: number,
+//     bedArrangements: BedArrangement[]
+//   ): BedArrangement | undefined => {};
+// };
 
 export const convertListingsToListingArrangements = (
   listings: Listing[]

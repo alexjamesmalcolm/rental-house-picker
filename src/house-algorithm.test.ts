@@ -58,9 +58,9 @@ test("thing", () => {
                 {
                   beds: [{ name: "king" }, { name: "twin" }],
                 },
-                {
-                  beds: [{ name: "king" }, { name: "twin" }],
-                },
+                // {
+                //   beds: [{ name: "king" }, { name: "twin" }],
+                // },
                 // {},
                 // {},
               ],
