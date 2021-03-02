@@ -131,16 +131,16 @@ test("long build", () => {
         gender: "male",
         howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
       },
-      // {
-      //   name: "Sicquan",
-      //   gender: "male",
-      //   howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-      // },
-      // {
-      //   name: "Bethany",
-      //   gender: "female",
-      //   howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-      // },
+      {
+        name: "Sicquan",
+        gender: "male",
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+      },
+      {
+        name: "Bethany",
+        gender: "female",
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+      },
       {
         name: "Caroline",
         gender: "female",
@@ -215,16 +215,16 @@ test("long build", () => {
                 // {
                 //   beds: [{ name: "king" }],
                 // },
-                // {
-                //   beds: [
-                //     { name: "twin" },
-                //     { name: "twin" },
-                //     { name: "twin" },
-                //     { name: "twin" },
-                //     { name: "twin" },
-                //     { name: "twin" },
-                //   ],
-                // },
+                {
+                  beds: [
+                    { name: "twin" },
+                    { name: "twin" },
+                    // { name: "twin" },
+                    // { name: "twin" },
+                    // { name: "twin" },
+                    // { name: "twin" },
+                  ],
+                },
               ],
             },
           ],
