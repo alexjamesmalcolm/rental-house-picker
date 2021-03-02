@@ -210,7 +210,26 @@ export const getAllPossibleArrangements = ({
           bedArrangement.people
         );
         if (arePeopleProperlySegregated) {
-          return true;
+          const areChildrenOnlySleepingInBedWithOtherFamilyMembers = bedArrangement.people.every(
+            (person) => {
+              const familyOfChild = peopleGroup.families.find((family) =>
+                family.children.some((child) => child.name === person.name)
+              );
+              return (
+                !familyOfChild ||
+                bedArrangement.people.every((person) => {
+                  return (
+                    person.name === familyOfChild.couple.wife.name ||
+                    person.name === familyOfChild.couple.husband.name ||
+                    familyOfChild.children.some(
+                      (child) => child.name === person.name
+                    )
+                  );
+                })
+              );
+            }
+          );
+          return areChildrenOnlySleepingInBedWithOtherFamilyMembers;
         }
         const isEveryPersonInSpaceInTheSameFamily = determineIfEveryPersonInSpaceIsInTheSameFamily(
           bedArrangement.people
@@ -229,6 +248,22 @@ export const getAllPossibleArrangements = ({
           const people = roomArrangement.bedArrangements.flatMap(
             (bed) => bed.people
           );
+          const isEveryChildWithAParent = people.every((person) => {
+            const familyOfChild = peopleGroup.families.find((family) =>
+              family.children.some((child) => child.name === person.name)
+            );
+            return (
+              !familyOfChild ||
+              people.some(
+                (person) =>
+                  person.name === familyOfChild.couple.husband.name ||
+                  person.name === familyOfChild.couple.wife.name
+              )
+            );
+          });
+          if (!isEveryChildWithAParent) {
+            return false;
+          }
           const arePeopleSegregatedByGender = determineIfPeopleAreSegregatedByGender(
             people
           );

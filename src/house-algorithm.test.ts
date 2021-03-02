@@ -219,7 +219,7 @@ test("long build", () => {
                   beds: [
                     { name: "twin" },
                     { name: "twin" },
-                    // { name: "twin" },
+                    { name: "twin" },
                     // { name: "twin" },
                     // { name: "twin" },
                     // { name: "twin" },
