@@ -206,6 +206,16 @@ export const getAllPossibleArrangements = ({
       const listingArrangements = fillBeds(listings, people);
       const bedArrangements = getBeds(listingArrangements);
       const isBedArrangementValid = bedArrangements.every((bedArrangement) => {
+        const isEveryoneComfortableWithHowManyPeopleAreInTheBed = bedArrangement.people.every(
+          (person) => {
+            const howManyOthersCanShareBed =
+              person.howManyOthersCanShareBed[bedArrangement.bed.name];
+            return howManyOthersCanShareBed + 1 >= bedArrangement.people.length;
+          }
+        );
+        if (!isEveryoneComfortableWithHowManyPeopleAreInTheBed) {
+          return false;
+        }
         const arePeopleProperlySegregated = determineIfPeopleAreSegregatedByGender(
           bedArrangement.people
         );

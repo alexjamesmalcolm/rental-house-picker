@@ -4,21 +4,21 @@ import { Listing, PeopleGroup } from "./types";
 test("long build", () => {
   const peopleGroup: PeopleGroup = {
     families: [
-      {
-        couple: {
-          husband: {
-            name: "Travis Davis",
-            gender: "male",
-            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-          },
-          wife: {
-            name: "Andrea Davis",
-            gender: "female",
-            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-          },
-        },
-        children: [],
-      },
+      // {
+      //   couple: {
+      //     husband: {
+      //       name: "Travis Davis",
+      //       gender: "male",
+      //       howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+      //     },
+      //     wife: {
+      //       name: "Andrea Davis",
+      //       gender: "female",
+      //       howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+      //     },
+      //   },
+      //   children: [],
+      // },
       // {
       //   couple: {
       //     husband: {
@@ -94,7 +94,7 @@ test("long build", () => {
       {
         name: "Noodle",
         gender: "male",
-        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
       },
       {
         name: "Larry",
@@ -109,12 +109,12 @@ test("long build", () => {
       {
         name: "Hanaan",
         gender: "male",
-        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
       },
       {
         name: "Isaac",
         gender: "male",
-        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
       },
       {
         name: "Kwinton",
@@ -124,12 +124,12 @@ test("long build", () => {
       {
         name: "Mackenzie",
         gender: "male",
-        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
       },
       {
         name: "Sam DeVine",
         gender: "male",
-        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
       },
       {
         name: "Sicquan",
@@ -139,48 +139,48 @@ test("long build", () => {
       {
         name: "Bethany",
         gender: "female",
-        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
       },
       {
         name: "Caroline",
         gender: "female",
-        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
       },
       {
         name: "Mara",
         gender: "female",
-        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
       },
       {
         name: "Molly",
         gender: "female",
         howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
       },
-      {
-        name: "Pearl",
-        gender: "female",
-        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-      },
-      {
-        name: "Sam Donermeyer",
-        gender: "female",
-        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-      },
-      {
-        name: "Sam Knight",
-        gender: "female",
-        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-      },
-      {
-        name: "Serena",
-        gender: "female",
-        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-      },
-      {
-        name: "Kaila",
-        gender: "female",
-        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-      },
+      // {
+      //   name: "Pearl",
+      //   gender: "female",
+      //   howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+      // },
+      // {
+      //   name: "Sam Donermeyer",
+      //   gender: "female",
+      //   howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+      // },
+      // {
+      //   name: "Sam Knight",
+      //   gender: "female",
+      //   howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+      // },
+      // {
+      //   name: "Serena",
+      //   gender: "female",
+      //   howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+      // },
+      // {
+      //   name: "Kaila",
+      //   gender: "female",
+      //   howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+      // },
     ],
   };
   const listings: Listing[] = [
@@ -212,17 +212,17 @@ test("long build", () => {
                 {
                   beds: [{ name: "king" }, { name: "twin" }],
                 },
-                // {
-                //   beds: [{ name: "king" }],
-                // },
+                {
+                  beds: [{ name: "king" }],
+                },
                 {
                   beds: [
                     { name: "twin" },
                     { name: "twin" },
                     { name: "twin" },
-                    // { name: "twin" },
-                    // { name: "twin" },
-                    // { name: "twin" },
+                    { name: "twin" },
+                    { name: "twin" },
+                    { name: "twin" },
                   ],
                 },
               ],
@@ -234,7 +234,7 @@ test("long build", () => {
   ];
   const results = getAllPossibleArrangements({ listings, peopleGroup });
   console.log(results.length);
-  expect(results).toMatchSnapshot();
+  // expect(results).toMatchSnapshot();
 });
 
 test("short build", () => {
