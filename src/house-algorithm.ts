@@ -68,16 +68,11 @@ export const getPeopleStructure = (
         floor.roomArrangements.map((room) =>
           room.bedArrangements.map((bed) => {
             const difference = getSpotCountOfBed(bed) - bed.people.length;
-            // const people = bed.people.map((person) => person.name);
-            // for (let iteration = 0; iteration < difference; iteration++) {
-            //   people.push("undefined");
-            // }
-            // return people;
-            return bed.people
-              .map((person) => person.name)
-              .concat(
-                new Array(difference).fill(undefined).map(() => "undefined")
-              );
+            const people = bed.people.map((person) => person.name);
+            for (let iteration = 0; iteration < difference; iteration++) {
+              people.push("undefined");
+            }
+            return people;
           })
         )
       )
