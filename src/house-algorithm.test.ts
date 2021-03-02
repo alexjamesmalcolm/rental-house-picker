@@ -1,7 +1,7 @@
 import { getAllPossibleArrangements } from "./house-algorithm";
 import { Listing, PeopleGroup } from "./types";
 
-test("short build", () => {
+test("long build", () => {
   const peopleGroup: PeopleGroup = {
     families: [
       {
@@ -212,8 +212,19 @@ test("short build", () => {
                 {
                   beds: [{ name: "king" }, { name: "twin" }],
                 },
-                // {},
-                // {},
+                // {
+                //   beds: [{ name: "king" }],
+                // },
+                // {
+                //   beds: [
+                //     { name: "twin" },
+                //     { name: "twin" },
+                //     { name: "twin" },
+                //     { name: "twin" },
+                //     { name: "twin" },
+                //     { name: "twin" },
+                //   ],
+                // },
               ],
             },
           ],
@@ -223,9 +234,10 @@ test("short build", () => {
   ];
   const results = getAllPossibleArrangements({ listings, peopleGroup });
   console.log(results.length);
+  expect(results).toMatchSnapshot();
 });
 
-test("long build", () => {
+test("short build", () => {
   const peopleGroup: PeopleGroup = {
     families: [],
     people: [
@@ -372,4 +384,5 @@ test("long build", () => {
   ];
   const results = getAllPossibleArrangements({ listings, peopleGroup });
   console.log(results.length);
+  expect(results).toMatchSnapshot();
 });
