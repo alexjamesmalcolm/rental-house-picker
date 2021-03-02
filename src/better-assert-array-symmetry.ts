@@ -1,8 +1,6 @@
-export const assertArraySymmetry = <
-  MultiDimensionalArray extends (MultiDimensionalArray | string)[]
->(
-  a: MultiDimensionalArray,
-  b: MultiDimensionalArray,
+export const assertArraySymmetry = <MultiDimensionalArray extends unknown[]>(
+  a: MultiDimensionalArray | string[],
+  b: MultiDimensionalArray | string[],
   transform?: (input: string) => string
 ): boolean => {
   const isStringArray = a.some((aElement) => typeof aElement === "string");
