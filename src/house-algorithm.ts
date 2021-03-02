@@ -91,40 +91,19 @@ export const getSpotCountOfBed = (bedArrangement: BedArrangement): number => {
   return 3;
 };
 
-const getBedOfNthSpot = (
-  n: number,
-  bedArrangements: BedArrangement[]
-): BedArrangement | undefined => {
-  const foundBed = bedArrangements.find((bedArrangement, index) => {
-    const currentSpotCount = bedArrangements.reduce(
-      (count, bedArrangement, innerIndex) => {
-        if (innerIndex < index) {
-          return count + getSpotCountOfBed(bedArrangement);
-        } else {
-          return count;
-        }
-      },
-      0
-    );
-    if (currentSpotCount === n) {
-      return true;
+const getBedOfNthSpotCache = (bedArrangements: BedArrangement[]) => {
+  const nthSpotToIndexCache: number[] = [];
+  bedArrangements.forEach((bedArrangement, index) => {
+    const spotCount = getSpotCountOfBed(bedArrangement);
+    for (let iteration = 0; iteration < spotCount; iteration++) {
+      nthSpotToIndexCache.push(index);
     }
-    const nextSpotCount = currentSpotCount + getSpotCountOfBed(bedArrangement);
-    if (n < nextSpotCount) {
-      return true;
-    }
-    return false;
   });
-  return foundBed;
+  return (
+    n: number,
+    bedArrangements: BedArrangement[]
+  ): BedArrangement | undefined => bedArrangements[nthSpotToIndexCache[n]];
 };
-
-// const getBedOfNthSpotCache = (bedArrangements: BedArrangement[]) => {
-//   const nthSpotToIndexCache: number[] = [];
-//   return (
-//     n: number,
-//     bedArrangements: BedArrangement[]
-//   ): BedArrangement | undefined => {};
-// };
 
 export const convertListingsToListingArrangements = (
   listings: Listing[]
@@ -154,6 +133,7 @@ export const fillBeds = (
 ): ListingArrangement[] => {
   const listingArrangements = convertListingsToListingArrangements(listings);
   const bedArrangements = getBeds(listingArrangements);
+  const getBedOfNthSpot = getBedOfNthSpotCache(bedArrangements);
   people.forEach((person, index) => {
     const bedArrangement = getBedOfNthSpot(index, bedArrangements);
     if (bedArrangement && person) {
