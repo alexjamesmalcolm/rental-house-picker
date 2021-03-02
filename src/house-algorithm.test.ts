@@ -386,3 +386,111 @@ test("short build", () => {
   console.log(results.length);
   expect(results).toMatchSnapshot();
 });
+
+test("put married couple in same bed", () => {
+  const peopleGroup: PeopleGroup = {
+    families: [
+      {
+        couple: {
+          husband: {
+            name: "Travis Davis",
+            gender: "male",
+            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+          },
+          wife: {
+            name: "Andrea Davis",
+            gender: "female",
+            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+          },
+        },
+        children: [],
+      },
+    ],
+    people: [
+      {
+        name: "Noodle",
+        gender: "male",
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+      },
+    ],
+  };
+  const listings: Listing[] = [
+    {
+      price: 0,
+      buildings: [
+        {
+          floors: [
+            {
+              rooms: [
+                { beds: [{ name: "queen" }] },
+                { beds: [{ name: "queen" }] },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ];
+  const results = getAllPossibleArrangements({ listings, peopleGroup });
+  console.log(results.length);
+  expect(results).toMatchSnapshot();
+});
+
+it("Put whole family in bed together", () => {
+  const peopleGroup: PeopleGroup = {
+    families: [
+      {
+        couple: {
+          husband: {
+            name: "Danny Marchese",
+            gender: "male",
+            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+          },
+          wife: {
+            name: "Carrie Marchese",
+            gender: "female",
+            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+          },
+        },
+        children: [
+          {
+            name: "Hope",
+            gender: "female",
+            howManyOthersCanShareBed: {
+              twin: 1,
+              queen: 2,
+              king: 2,
+            },
+          },
+        ],
+      },
+    ],
+    people: [
+      {
+        name: "Noodle",
+        gender: "male",
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+      },
+    ],
+  };
+  const listings: Listing[] = [
+    {
+      price: 0,
+      buildings: [
+        {
+          floors: [
+            {
+              rooms: [
+                { beds: [{ name: "king" }] },
+                { beds: [{ name: "queen" }] },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ];
+  const results = getAllPossibleArrangements({ listings, peopleGroup });
+  console.log(results.length);
+  expect(results).toMatchSnapshot();
+});

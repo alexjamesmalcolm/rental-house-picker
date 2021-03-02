@@ -268,6 +268,21 @@ export const getAllPossibleArrangements = ({
       const firstListingArrangements = fillBeds(listings, firstPeople);
       const secondListingArrangements = fillBeds(listings, secondPeople);
 
+      const firstPeopleStructure = getPeopleStructure(firstListingArrangements);
+      const secondPeopleStructure = getPeopleStructure(
+        secondListingArrangements
+      );
+
+      const isSortedEquivalent = assertArraySymmetry(
+        firstPeopleStructure,
+        secondPeopleStructure,
+        (input) => convertNameToBasicIdentity(input, peopleGroup)
+      );
+
+      if (isSortedEquivalent) {
+        return true;
+      }
+
       const firstBedArrangements = getBeds(firstListingArrangements);
       const secondBedArrangements = getBeds(secondListingArrangements);
       const isEveryBedArrangementEquivalent = firstBedArrangements.every(
@@ -331,6 +346,26 @@ export const getAllPossibleArrangements = ({
           if (!areQueenBedsEquivalent) {
             return false;
           }
+          const areKingBedsEquivalent = firstRoomArrangement.bedArrangements.every(
+            (firstBed) => {
+              return (
+                firstBed.bed.name !== "king" ||
+                secondRoomArrangement.bedArrangements.some((secondBed) => {
+                  return (
+                    secondBed.bed.name === "king" &&
+                    firstBed.people.every((firstPerson) => {
+                      return secondBed.people.some(
+                        (secondPerson) => firstPerson.name === secondPerson.name
+                      );
+                    })
+                  );
+                })
+              );
+            }
+          );
+          if (!areKingBedsEquivalent) {
+            return false;
+          }
           return true;
         }
       );
@@ -339,20 +374,6 @@ export const getAllPossibleArrangements = ({
         return false;
       }
 
-      const firstPeopleStructure = getPeopleStructure(firstListingArrangements);
-      const secondPeopleStructure = getPeopleStructure(
-        secondListingArrangements
-      );
-
-      const isSortedEquivalent = assertArraySymmetry(
-        firstPeopleStructure,
-        secondPeopleStructure,
-        (input) => convertNameToBasicIdentity(input, peopleGroup)
-      );
-
-      if (isSortedEquivalent) {
-        return true;
-      }
       return false;
     },
   });
