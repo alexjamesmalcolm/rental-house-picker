@@ -1,6 +1,6 @@
 import { decisionTree } from "./algorithm";
+import { assertArraySymmetry } from "./better-assert-array-symmetry";
 import convertNameToBasicIdentity from "./convert-name-to-basic-identity";
-import sortStructure from "./sort-structure";
 import {
   BedArrangement,
   Listing,
@@ -251,16 +251,12 @@ export const getAllPossibleArrangements = ({
         return convertNameToBasicIdentity(name, peopleGroup);
       };
 
-      const firstBasicIdentities = firstPeople.map(
-        convertPersonToBasicIdentity
-      );
-      const secondBasicIdentities = secondPeople.map(
-        convertPersonToBasicIdentity
-      );
-
-      const isEveryIdentityEquivalent = firstBasicIdentities.every(
-        (firstBasicIdentity, index) => {
-          const secondBasicIdentity = secondBasicIdentities[index];
+      const isEveryIdentityEquivalent = firstPeople.every(
+        (firstPerson, index) => {
+          const firstBasicIdentity = convertPersonToBasicIdentity(firstPerson);
+          const secondBasicIdentity = convertPersonToBasicIdentity(
+            secondPeople[index]
+          );
           return firstBasicIdentity === secondBasicIdentity;
         }
       );
@@ -279,17 +275,13 @@ export const getAllPossibleArrangements = ({
           const secondBed = secondBedArrangements[index];
           const firstPeople = firstBed.people;
           const secondPeople = secondBed.people;
-          const firstPeopleIdentities = firstPeople.map(
-            convertPersonToBasicIdentity
-          );
-          const secondPeopleIdentities = secondPeople.map(
-            convertPersonToBasicIdentity
-          );
-          return firstPeopleIdentities.every((firstIdentity) =>
-            secondPeopleIdentities.find(
-              (secondIdentity) => firstIdentity === secondIdentity
-            )
-          );
+          return firstPeople.every((firstPerson) => {
+            const firstIdentity = convertPersonToBasicIdentity(firstPerson);
+            return secondPeople.find(
+              (secondPerson) =>
+                firstIdentity === convertPersonToBasicIdentity(secondPerson)
+            );
+          });
         }
       );
       if (isEveryBedArrangementEquivalent) {
@@ -307,18 +299,15 @@ export const getAllPossibleArrangements = ({
           const secondTwinBeds = secondRoomArrangement.bedArrangements.filter(
             (bedArrangement) => bedArrangement.bed.name === "twin"
           );
-          const firstTwinBedPeople = firstTwinBeds.flatMap((bed) => bed.people);
-          const secondTwinBedPeople = secondTwinBeds.flatMap(
-            (bed) => bed.people
-          );
-          const areTwinBedsEquivalent =
-            firstTwinBedPeople.length === secondTwinBedPeople.length &&
-            firstTwinBedPeople.every((firstPerson) => {
-              const secondPerson = secondTwinBedPeople.find(
-                (secondPerson) => firstPerson.name === secondPerson.name
-              );
-              return !!secondPerson;
+          const areTwinBedsEquivalent = firstTwinBeds.every((firstTwinBed) => {
+            return secondTwinBeds.some((secondTwinBed) => {
+              return firstTwinBed.people.every((firstPerson) => {
+                return secondTwinBed.people.some(
+                  (secondPerson) => firstPerson.name === secondPerson.name
+                );
+              });
             });
+          });
           if (!areTwinBedsEquivalent) {
             return false;
           }
@@ -354,17 +343,12 @@ export const getAllPossibleArrangements = ({
       const secondPeopleStructure = getPeopleStructure(
         secondListingArrangements
       );
-      const firstSortedPeopleStructure = sortStructure(
-        firstPeopleStructure,
-        peopleGroup
-      );
-      const secondSortedPeopleStructure = sortStructure(
-        secondPeopleStructure,
-        peopleGroup
-      );
 
-      const isSortedEquivalent =
-        firstSortedPeopleStructure === secondSortedPeopleStructure;
+      const isSortedEquivalent = assertArraySymmetry(
+        firstPeopleStructure,
+        secondPeopleStructure,
+        (input) => convertNameToBasicIdentity(input, peopleGroup)
+      );
 
       if (isSortedEquivalent) {
         return true;
