@@ -234,7 +234,7 @@ test("long build", () => {
   ];
   const results = getAllPossibleArrangements({ listings, peopleGroup });
   console.log(results.length);
-  // expect(results).toMatchSnapshot();
+  expect(results).toMatchSnapshot();
 });
 
 test("short build", () => {

@@ -83,6 +83,285 @@ Array [
 ]
 `;
 
+exports[`long build 1`] = `
+Array [
+  Array [
+    undefined,
+    undefined,
+    Object {
+      "gender": "female",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Bethany",
+    },
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    Object {
+      "gender": "female",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Caroline",
+    },
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Noodle",
+    },
+    undefined,
+    undefined,
+    undefined,
+    Object {
+      "gender": "female",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Mara",
+    },
+    undefined,
+    undefined,
+    Object {
+      "gender": "female",
+      "howManyOthersCanShareBed": Object {
+        "king": 1,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Molly",
+    },
+    undefined,
+    undefined,
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 1,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Larry",
+    },
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 1,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Deon",
+    },
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Hanaan",
+    },
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Isaac",
+    },
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 1,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Kwinton",
+    },
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Mackenzie",
+    },
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Sam DeVine",
+    },
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 1,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Sicquan",
+    },
+  ],
+  Array [
+    undefined,
+    undefined,
+    Object {
+      "gender": "female",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Bethany",
+    },
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    Object {
+      "gender": "female",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Caroline",
+    },
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    Object {
+      "gender": "female",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Mara",
+    },
+    undefined,
+    undefined,
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Noodle",
+    },
+    undefined,
+    Object {
+      "gender": "female",
+      "howManyOthersCanShareBed": Object {
+        "king": 1,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Molly",
+    },
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 1,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Larry",
+    },
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 1,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Deon",
+    },
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Hanaan",
+    },
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Isaac",
+    },
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 1,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Kwinton",
+    },
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Mackenzie",
+    },
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 2,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Sam DeVine",
+    },
+    Object {
+      "gender": "male",
+      "howManyOthersCanShareBed": Object {
+        "king": 1,
+        "queen": 1,
+        "twin": 0,
+      },
+      "name": "Sicquan",
+    },
+  ],
+]
+`;
+
 exports[`put married couple in same bed 1`] = `
 Array [
   Array [

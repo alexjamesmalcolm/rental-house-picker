@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import uniqueWith from "lodash.uniqwith";
+import partition from "lodash.partition";
 
 const factorial = (n: number): number => {
   return n !== 1 ? n * factorial(n - 1) : 1;
@@ -20,16 +21,32 @@ export interface Decision {
   isGrowthPoint: boolean;
 }
 
-export const decisionTree = <PermutableMember extends unknown>({
+export const decisionTree = <
+  PermutableMember extends unknown,
+  CommonEnvironment extends unknown
+>({
   areBranchesEquivalent,
   permutable,
   shouldKeepBranch,
+  getCommonEnvironment,
 }: {
   permutable: PermutableMember[];
-  shouldKeepBranch?: (branchContents: PermutableMember[]) => boolean;
+  shouldKeepBranch?: (
+    branchContents: PermutableMember[],
+    commonEnvironment: CommonEnvironment
+  ) => boolean;
+  getCommonEnvironment: (
+    branchContents: PermutableMember[]
+  ) => CommonEnvironment;
   areBranchesEquivalent?: (
-    firstBranchContents: PermutableMember[],
-    secondBranchContents: PermutableMember[]
+    first: {
+      branchContents: PermutableMember[];
+      commonEnvironment: CommonEnvironment;
+    },
+    second: {
+      branchContents: PermutableMember[];
+      commonEnvironment: CommonEnvironment;
+    }
   ) => boolean;
 }): PermutableMember[][] => {
   if (permutable.length === 0) return [];
@@ -75,39 +92,57 @@ export const decisionTree = <PermutableMember extends unknown>({
       }
     }
   };
-  const findAndDestroyDuplicateBranches = () => {
+  const findAndDestroyDuplicateBranches = (
+    branchObjects: {
+      tip: Decision;
+      branch: Decision[];
+      branchContents: PermutableMember[];
+      commonEnvironment: CommonEnvironment;
+    }[]
+  ) => {
     if (areBranchesEquivalent) {
-      const tips = getTips();
-      const branches = tips.map((tip) => getBranch(tip));
-      const uniqueBranches: Decision[][] = uniqueWith(
-        branches,
+      const uniqueBranchObjects = uniqueWith(
+        branchObjects,
         (firstBranch, secondBranch) =>
-          areBranchesEquivalent(
-            getBranchDecisionContents(firstBranch),
-            getBranchDecisionContents(secondBranch)
-          )
+          areBranchesEquivalent(firstBranch, secondBranch)
       );
-      const uniqueTips = uniqueBranches.map(
-        (branch) => branch[branch.length - 1]
-      );
-      const tipsOfDuplicateBranches = tips.filter(
-        (tip) => !uniqueTips.some((uniqueTip) => uniqueTip.id === tip.id)
-      );
-      tipsOfDuplicateBranches.forEach(pruneBranchByTip);
+      branchObjects.forEach((branchObject) => {
+        const isUnique = uniqueBranchObjects.some(
+          (uniqueBranchObject) =>
+            uniqueBranchObject.tip.id === branchObject.tip.id
+        );
+        if (!isUnique) {
+          pruneBranchByTip(branchObject.tip);
+        }
+      });
+      return uniqueBranchObjects;
     }
+    return branchObjects;
   };
-  const findAndDestroyInvalidBranches = () => {
+  const findAndDestroyInvalidBranches = (
+    branchObjects: {
+      tip: Decision;
+      branch: Decision[];
+      branchContents: PermutableMember[];
+      commonEnvironment: CommonEnvironment;
+    }[]
+  ) => {
     if (shouldKeepBranch) {
-      const tips = getTips();
-      const branches = tips.map((tip) => getBranch(tip));
-      const invalidBranches: Decision[][] = branches.filter(
-        (branch) => !shouldKeepBranch(getBranchDecisionContents(branch))
+      const [
+        validBranchObjects,
+        invalidBranchObjects,
+      ] = partition(branchObjects, (branchObject) =>
+        shouldKeepBranch(
+          branchObject.branchContents,
+          branchObject.commonEnvironment
+        )
       );
-      const tipsOfInvalidBranches = invalidBranches.map(
-        (branch) => branch[branch.length - 1]
-      );
-      tipsOfInvalidBranches.forEach(pruneBranchByTip);
+      invalidBranchObjects.forEach((invalidBranchObject) => {
+        pruneBranchByTip(invalidBranchObject.tip);
+      });
+      return validBranchObjects;
     }
+    return branchObjects;
   };
   const growTip = (tip: Decision): void => {
     const branch = getBranch(tip);
@@ -125,20 +160,46 @@ export const decisionTree = <PermutableMember extends unknown>({
     });
     tip.isGrowthPoint = false;
   };
-  const growTips = () => {
-    const growthTips = decisions.filter(
-      (decision) => decision.isGrowthPoint && isTip(decision)
-    );
-    growthTips.forEach(growTip);
+  const growTips = (
+    branchObjects: {
+      tip: Decision;
+      branch: Decision[];
+      branchContents: PermutableMember[];
+      commonEnvironment: CommonEnvironment;
+    }[]
+  ) => {
+    branchObjects.forEach(({ tip }) => {
+      if (tip.isGrowthPoint) {
+        growTip(tip);
+      }
+    });
+    // tips.forEach((tip) => {
+    //   if (tip.isGrowthPoint) {
+    //     growTip(tip);
+    //   }
+    // });
+    return branchObjects;
   };
   for (let iteration = 0; iteration < maximum; iteration++) {
-    findAndDestroyDuplicateBranches();
-    findAndDestroyInvalidBranches();
-    growTips();
-    const tips = getTips();
-    if (tips.every((tip) => !tip.isGrowthPoint)) {
+    const branchObjects = findAndDestroyInvalidBranches(
+      findAndDestroyDuplicateBranches(
+        getTips().map((tip) => {
+          const branch = getBranch(tip);
+          const branchContents = getBranchDecisionContents(branch);
+          const commonEnvironment = getCommonEnvironment(branchContents);
+          return {
+            tip,
+            branch,
+            commonEnvironment,
+            branchContents,
+          };
+        })
+      )
+    );
+    if (branchObjects.every(({ tip }) => !tip.isGrowthPoint)) {
       break;
     }
+    growTips(branchObjects);
   }
   const tips = getTips();
   const branches = tips.map(getBranch);

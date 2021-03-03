@@ -5,11 +5,13 @@ describe("decisionTree", () => {
     const permutable = [1, 2, 3];
     const result = decisionTree({
       permutable,
+      getCommonEnvironment: () => {},
       shouldKeepBranch: (contents) =>
         contents.reduce(
           (previousValue, currentValue) => previousValue - currentValue
         ) >= 0,
     });
+    expect(result.length).toEqual(2);
     expect(result).toStrictEqual([
       [3, 1, 2],
       [3, 2, 1],
@@ -19,7 +21,11 @@ describe("decisionTree", () => {
     const permutable = [1, 2, 2, 2, 2];
     const result = decisionTree({
       permutable,
-      areBranchesEquivalent: (first, second) =>
+      getCommonEnvironment: () => {},
+      areBranchesEquivalent: (
+        { branchContents: first },
+        { branchContents: second }
+      ) =>
         first.length === second.length &&
         first.every((firstElement, index) => second[index] === firstElement),
     });

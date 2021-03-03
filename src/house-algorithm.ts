@@ -11,6 +11,8 @@ import {
   RoomArrangement,
   PeopleGroup,
   Family,
+  Woman,
+  Man,
 } from "./types";
 
 export const getBuildings = (
@@ -200,10 +202,18 @@ export const getAllPossibleArrangements = ({
         );
       });
     });
-  const results = decisionTree({
+  const results = decisionTree<
+    Man | Woman | undefined,
+    { listingArrangements: ListingArrangement[] }
+  >({
     permutable: people,
-    shouldKeepBranch: (people) => {
+    getCommonEnvironment: (people) => {
       const listingArrangements = fillBeds(listings, people);
+      return {
+        listingArrangements,
+      };
+    },
+    shouldKeepBranch: (people, { listingArrangements }) => {
       const bedArrangements = getBeds(listingArrangements);
       const isBedArrangementValid = bedArrangements.every((bedArrangement) => {
         const isEveryoneComfortableWithHowManyPeopleAreInTheBed = bedArrangement.people.every(
@@ -290,7 +300,16 @@ export const getAllPossibleArrangements = ({
       }
       return true;
     },
-    areBranchesEquivalent: (firstPeople, secondPeople) => {
+    areBranchesEquivalent: (
+      {
+        branchContents: firstPeople,
+        commonEnvironment: { listingArrangements: firstListingArrangements },
+      },
+      {
+        branchContents: secondPeople,
+        commonEnvironment: { listingArrangements: secondListingArrangements },
+      }
+    ) => {
       const convertPersonToBasicIdentity = (person?: Person): string => {
         const name = person ? person.name : "undefined";
         return convertNameToBasicIdentity(name, peopleGroup);
@@ -309,9 +328,6 @@ export const getAllPossibleArrangements = ({
       if (isEveryIdentityEquivalent) {
         return true;
       }
-
-      const firstListingArrangements = fillBeds(listings, firstPeople);
-      const secondListingArrangements = fillBeds(listings, secondPeople);
 
       const firstPeopleStructure = getPeopleStructure(firstListingArrangements);
       const secondPeopleStructure = getPeopleStructure(
