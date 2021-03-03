@@ -7,91 +7,91 @@ import { Listing, PeopleGroup } from "./types";
 test("long build", () => {
   const peopleGroup: PeopleGroup = {
     families: [
-      // {
-      //   couple: {
-      //     husband: {
-      //       name: "Travis Davis",
-      //       gender: "male",
-      //       howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-      //     },
-      //     wife: {
-      //       name: "Andrea Davis",
-      //       gender: "female",
-      //       howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
-      //     },
-      //   },
-      //   children: [],
-      // },
-      // {
-      //   couple: {
-      //     husband: {
-      //       name: "Alec Brickey",
-      //       gender: "male",
-      //       howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-      //     },
-      //     wife: {
-      //       name: "Christa Brickey",
-      //       gender: "female",
-      //       howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-      //     },
-      //   },
-      //   children: [],
-      // },
-      // {
-      //   couple: {
-      //     husband: {
-      //       name: "Danny Marchese",
-      //       gender: "male",
-      //       howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-      //     },
-      //     wife: {
-      //       name: "Carrie Marchese",
-      //       gender: "female",
-      //       howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-      //     },
-      //   },
-      //   children: [
-      //     {
-      //       name: "Hope",
-      //       gender: "female",
-      //       howManyOthersCanShareBed: {
-      //         twin: 1,
-      //         queen: 2,
-      //         king: 2,
-      //       },
-      //     },
-      //   ],
-      // },
-      // {
-      //   couple: {
-      //     husband: {
-      //       name: "Daniel Branaghan",
-      //       gender: "male",
-      //       howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-      //     },
-      //     wife: {
-      //       name: "Sarah Branaghan",
-      //       gender: "female",
-      //       howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
-      //     },
-      //   },
-      //   children: [],
-      // },
-      // {
-      //   couple: {
-      //     husband: {
-      //       name: "Eric Taylor",
-      //       gender: "male",
-      //       howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
-      //     },
-      //     wife: {
-      //       name: "Jessica Taylor",
-      //       gender: "female",
-      //       howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
-      //     },
-      //   },
-      //   children: [],
-      // },
+      {
+        couple: {
+          husband: {
+            name: "Travis Davis",
+            gender: "male",
+            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+          },
+          wife: {
+            name: "Andrea Davis",
+            gender: "female",
+            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+          },
+        },
+        children: [],
+      },
+      {
+        couple: {
+          husband: {
+            name: "Alec Brickey",
+            gender: "male",
+            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+          },
+          wife: {
+            name: "Christa Brickey",
+            gender: "female",
+            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+          },
+        },
+        children: [],
+      },
+      {
+        couple: {
+          husband: {
+            name: "Danny Marchese",
+            gender: "male",
+            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+          },
+          wife: {
+            name: "Carrie Marchese",
+            gender: "female",
+            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+          },
+        },
+        children: [
+          {
+            name: "Hope",
+            gender: "female",
+            howManyOthersCanShareBed: {
+              twin: 1,
+              queen: 2,
+              king: 2,
+            },
+          },
+        ],
+      },
+      {
+        couple: {
+          husband: {
+            name: "Daniel Branaghan",
+            gender: "male",
+            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+          },
+          wife: {
+            name: "Sarah Branaghan",
+            gender: "female",
+            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+          },
+        },
+        children: [],
+      },
+      {
+        couple: {
+          husband: {
+            name: "Eric Taylor",
+            gender: "male",
+            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+          },
+          wife: {
+            name: "Jessica Taylor",
+            gender: "female",
+            howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+          },
+        },
+        children: [],
+      },
     ],
     people: [
       // BEGINNING OF MARRIED COUPLES AS SINGLES
