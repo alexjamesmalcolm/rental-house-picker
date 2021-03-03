@@ -88,6 +88,12 @@ export const getSpotCountOfBed = (bedArrangement: BedArrangement): number => {
   return 3;
 };
 
+export const getSpotCountOfListing = (listings: Listing[]): number =>
+  getBeds(convertListingsToListingArrangements(listings)).reduce(
+    (count, bed) => count + getSpotCountOfBed(bed),
+    0
+  );
+
 const getBedOfNthSpotCache = (bedArrangements: BedArrangement[]) => {
   const nthSpotToIndexCache: number[] = [];
   bedArrangements.forEach((bedArrangement, index) => {
