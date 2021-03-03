@@ -104,7 +104,7 @@ test("long build", () => {
       {
         name: "Deon",
         gender: "male",
-        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
       },
       {
         name: "Hanaan",
@@ -119,7 +119,7 @@ test("long build", () => {
       {
         name: "Kwinton",
         gender: "male",
-        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
       },
       {
         name: "Mackenzie",
@@ -156,31 +156,31 @@ test("long build", () => {
         gender: "female",
         howManyOthersCanShareBed: { twin: 0, queen: 1, king: 1 },
       },
-      // {
-      //   name: "Pearl",
-      //   gender: "female",
-      //   howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
-      // },
-      // {
-      //   name: "Sam Donermeyer",
-      //   gender: "female",
-      //   howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
-      // },
-      // {
-      //   name: "Sam Knight",
-      //   gender: "female",
-      //   howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
-      // },
-      // {
-      //   name: "Serena",
-      //   gender: "female",
-      //   howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
-      // },
-      // {
-      //   name: "Kaila",
-      //   gender: "female",
-      //   howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
-      // },
+      {
+        name: "Pearl",
+        gender: "female",
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+      },
+      {
+        name: "Sam Donermeyer",
+        gender: "female",
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+      },
+      {
+        name: "Sam Knight",
+        gender: "female",
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+      },
+      {
+        name: "Serena",
+        gender: "female",
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+      },
+      {
+        name: "Kaila",
+        gender: "female",
+        howManyOthersCanShareBed: { twin: 0, queen: 1, king: 2 },
+      },
     ],
   };
   const listings: Listing[] = [
