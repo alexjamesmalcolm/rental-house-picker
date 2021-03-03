@@ -7,8 +7,7 @@ const convertNameToBasicIdentity = (
   if (name === "undefined") return name;
   const person = peopleGroup.people.find((person) => person.name === name);
   if (person) {
-    if (person.gender === "male") return "SINGLE MALE";
-    return "SINGLE FEMALE";
+    return `${person.gender}-${person.howManyOthersCanShareBed.twin}-${person.howManyOthersCanShareBed.queen}-${person.howManyOthersCanShareBed.king}`;
   }
   return name;
 };
