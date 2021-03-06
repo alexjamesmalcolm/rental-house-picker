@@ -19,8 +19,8 @@ export const assertArraySymmetry = <MultiDimensionalArray extends unknown[]>(
   return a.every((subA) => {
     return b.some((subB) =>
       assertArraySymmetry(
-        subA as MultiDimensionalArray,
-        subB as MultiDimensionalArray,
+        (subA as unknown) as MultiDimensionalArray,
+        (subB as unknown) as MultiDimensionalArray,
         transform
       )
     );

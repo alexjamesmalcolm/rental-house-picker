@@ -1,4 +1,4 @@
-import { decisionTree } from "./algorithm";
+import { breadthFirstSearchDecisionTree } from "./algorithm/breadth-first-search-decision-tree";
 import { assertArraySymmetry } from "./better-assert-array-symmetry";
 import convertNameToBasicIdentity from "./convert-name-to-basic-identity";
 import {
@@ -208,11 +208,12 @@ export const getAllPossibleArrangements = ({
         );
       });
     });
-  const results = decisionTree<
+  const results = breadthFirstSearchDecisionTree<
     Man | Woman | undefined,
     { listingArrangements: ListingArrangement[] }
   >({
     permutable: people,
+    branchingLimit: 4,
     getCommonEnvironment: (people) => {
       const listingArrangements = fillBeds(listings, people);
       return {

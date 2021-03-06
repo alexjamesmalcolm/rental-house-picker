@@ -1,9 +1,9 @@
-import { decisionTree } from "./algorithm";
+import { breadthFirstSearchDecisionTree } from "./breadth-first-search-decision-tree";
 
-describe("decisionTree", () => {
+describe("breadthFirstSearchDecisionTree", () => {
   it("should sort into an order than when they are subtracted from each other it doesn't equal a negative number", () => {
     const permutable = [1, 2, 3];
-    const result = decisionTree({
+    const result = breadthFirstSearchDecisionTree({
       permutable,
       getCommonEnvironment: () => {},
       shouldKeepBranch: (contents) =>
@@ -19,7 +19,7 @@ describe("decisionTree", () => {
   });
   it("should should produce every unique permutation", () => {
     const permutable = [1, 2, 2, 2, 2];
-    const result = decisionTree({
+    const result = breadthFirstSearchDecisionTree({
       permutable,
       getCommonEnvironment: () => {},
       areBranchesEquivalent: (
