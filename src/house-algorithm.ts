@@ -213,6 +213,7 @@ export const getAllPossibleArrangements = ({
     { listingArrangements: ListingArrangement[] }
   >({
     permutable: people,
+    branchingLimit: 1,
     getCommonEnvironment: (people) => {
       const listingArrangements = fillBeds(listings, people);
       return {
