@@ -18,13 +18,8 @@ const createDecision = ({
   p,
 });
 
-const getBranchIndexes = (decision: Decision): Decision["oi"][] => {
-  if (decision.p) {
-    return [...getBranchIndexes(decision.p), decision.oi];
-  } else {
-    return [decision.oi];
-  }
-};
+const getBranchIndexes = (decision: Decision): Decision["oi"][] =>
+  decision.p ? [...getBranchIndexes(decision.p), decision.oi] : [decision.oi];
 
 export function* depthFirstSearchDecisionTree<PermutableMember>({
   permutable,
@@ -32,33 +27,27 @@ export function* depthFirstSearchDecisionTree<PermutableMember>({
   areBranchesEquivalent,
 }: {
   permutable: PermutableMember[];
-  shouldKeepBranch?: (
-    branchContents: PermutableMember[]
-    // commonEnvironment: CommonEnvironment
-  ) => boolean;
+  shouldKeepBranch?: (branchContents: PermutableMember[]) => boolean;
   areBranchesEquivalent?: (
     first: {
       branchContents: PermutableMember[];
-      // commonEnvironment: CommonEnvironment;
     },
     second: {
       branchContents: PermutableMember[];
-      // commonEnvironment: CommonEnvironment;
     }
   ) => boolean;
 }) {
   const decisionQueue: Decision[] = [];
   const finishedIndices: number[][] = [];
   const permutableIndexes = permutable.map((member, index) => index);
-  // const maximum = factorial(permutable.length);
+
   // Make all decisions off of root
   permutable.forEach((member, index) => {
     decisionQueue.push({ id: uniqueIdGenerator(), oi: index });
   });
   while (decisionQueue.length > 0) {
     // Grab the latest decision off of the queue
-    const latestDecision = decisionQueue.pop();
-    if (!latestDecision) return;
+    const latestDecision = (decisionQueue.pop() as unknown) as Decision;
 
     // Get its branch
     const branchIndexes = getBranchIndexes(latestDecision);
@@ -81,18 +70,22 @@ export function* depthFirstSearchDecisionTree<PermutableMember>({
       });
 
     if (isBranchValid) {
-      if (isBranchFinished() && !isBranchDuplicate()) {
-        // Add branch indexes to finishedindices
-        finishedIndices.push(branchIndexes);
-        yield branchContents;
+      if (isBranchFinished()) {
+        if (!isBranchDuplicate()) {
+          // Add branch indexes to finishedindices
+          finishedIndices.push(branchIndexes);
+          if (decisionQueue.length === 0) return branchContents;
+          else yield branchContents;
+        }
       } else {
         // GROW branch and add decisions to queue
-        const remainingIndexes = permutableIndexes.filter(
-          (index) => !branchIndexes.includes(index)
-        );
-        remainingIndexes.forEach((index) =>
-          decisionQueue.push(createDecision({ index, parent: latestDecision }))
-        );
+        permutableIndexes.forEach((index) => {
+          if (!branchIndexes.includes(index)) {
+            decisionQueue.push(
+              createDecision({ index, parent: latestDecision })
+            );
+          }
+        });
       }
     }
   }
