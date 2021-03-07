@@ -1,237 +1,515 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Lake Front! Custom Built! Carriage House! Gated Community! 1`] = `
+exports[`SPECTACULAR NEW BEACH HOUSE WITH 4TH LEVEL SKYDECK & CUSTOM POOL/SPA 1`] = `
 Array [
   Object {
-    "gender": "female",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
+    "buildingArrangements": Array [
+      Object {
+        "floorArrangements": Array [
+          Object {
+            "roomArrangements": Array [
+              Object {
+                "bedArrangements": Array [
+                  Object {
+                    "bed": Object {
+                      "name": "king",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "female",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Sarah Branaghan",
+                      },
+                      Object {
+                        "gender": "male",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Daniel Branaghan",
+                      },
+                    ],
+                  },
+                  Object {
+                    "bed": Object {
+                      "name": "twin",
+                    },
+                    "people": Array [],
+                  },
+                  Object {
+                    "bed": Object {
+                      "name": "twin",
+                    },
+                    "people": Array [],
+                  },
+                ],
+              },
+              Object {
+                "bedArrangements": Array [
+                  Object {
+                    "bed": Object {
+                      "name": "queen",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "female",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Carrie Marchese",
+                      },
+                      Object {
+                        "gender": "male",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Danny Marchese",
+                      },
+                    ],
+                  },
+                  Object {
+                    "bed": Object {
+                      "name": "queen",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "female",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 2,
+                          "twin": 1,
+                        },
+                        "name": "Hope",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "roomArrangements": Array [
+              Object {
+                "bedArrangements": Array [
+                  Object {
+                    "bed": Object {
+                      "name": "king",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "female",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Christa Brickey",
+                      },
+                      Object {
+                        "gender": "female",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Andrea Davis",
+                      },
+                      Object {
+                        "gender": "female",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Kaila",
+                      },
+                    ],
+                  },
+                  Object {
+                    "bed": Object {
+                      "name": "twin",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "female",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Serena",
+                      },
+                    ],
+                  },
+                  Object {
+                    "bed": Object {
+                      "name": "twin",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "female",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Sam Knight",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "roomArrangements": Array [
+              Object {
+                "bedArrangements": Array [
+                  Object {
+                    "bed": Object {
+                      "name": "king",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "male",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Alec Brickey",
+                      },
+                      Object {
+                        "gender": "male",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Travis Davis",
+                      },
+                      Object {
+                        "gender": "male",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Sicquan",
+                      },
+                    ],
+                  },
+                  Object {
+                    "bed": Object {
+                      "name": "twin",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "male",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Sam DeVine",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "bedArrangements": Array [
+                  Object {
+                    "bed": Object {
+                      "name": "king",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "female",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Sam Donermeyer",
+                      },
+                      Object {
+                        "gender": "female",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Pearl",
+                      },
+                      Object {
+                        "gender": "female",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Molly",
+                      },
+                    ],
+                  },
+                  Object {
+                    "bed": Object {
+                      "name": "twin",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "female",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Mara",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "bedArrangements": Array [
+                  Object {
+                    "bed": Object {
+                      "name": "king",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "female",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Caroline",
+                      },
+                      Object {
+                        "gender": "female",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Bethany",
+                      },
+                    ],
+                  },
+                ],
+              },
+              Object {
+                "bedArrangements": Array [
+                  Object {
+                    "bed": Object {
+                      "name": "twin",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "male",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Kwinton",
+                      },
+                    ],
+                  },
+                  Object {
+                    "bed": Object {
+                      "name": "twin",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "male",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Isaac",
+                      },
+                    ],
+                  },
+                  Object {
+                    "bed": Object {
+                      "name": "twin",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "male",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Deon",
+                      },
+                    ],
+                  },
+                  Object {
+                    "bed": Object {
+                      "name": "twin",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "male",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Larry",
+                      },
+                    ],
+                  },
+                  Object {
+                    "bed": Object {
+                      "name": "twin",
+                    },
+                    "people": Array [
+                      Object {
+                        "gender": "male",
+                        "howManyOthersCanShareBed": Object {
+                          "king": 2,
+                          "queen": 1,
+                          "twin": 0,
+                        },
+                        "name": "Noodle",
+                      },
+                    ],
+                  },
+                  Object {
+                    "bed": Object {
+                      "name": "twin",
+                    },
+                    "people": Array [],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+    "listing": Object {
+      "buildings": Array [
+        Object {
+          "floors": Array [
+            Object {
+              "rooms": Array [
+                Object {
+                  "beds": Array [
+                    Object {
+                      "name": "king",
+                    },
+                    Object {
+                      "name": "twin",
+                    },
+                    Object {
+                      "name": "twin",
+                    },
+                  ],
+                },
+                Object {
+                  "beds": Array [
+                    Object {
+                      "name": "queen",
+                    },
+                    Object {
+                      "name": "queen",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "rooms": Array [
+                Object {
+                  "beds": Array [
+                    Object {
+                      "name": "king",
+                    },
+                    Object {
+                      "name": "twin",
+                    },
+                    Object {
+                      "name": "twin",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "rooms": Array [
+                Object {
+                  "beds": Array [
+                    Object {
+                      "name": "king",
+                    },
+                    Object {
+                      "name": "twin",
+                    },
+                  ],
+                },
+                Object {
+                  "beds": Array [
+                    Object {
+                      "name": "king",
+                    },
+                    Object {
+                      "name": "twin",
+                    },
+                  ],
+                },
+                Object {
+                  "beds": Array [
+                    Object {
+                      "name": "king",
+                    },
+                  ],
+                },
+                Object {
+                  "beds": Array [
+                    Object {
+                      "name": "twin",
+                    },
+                    Object {
+                      "name": "twin",
+                    },
+                    Object {
+                      "name": "twin",
+                    },
+                    Object {
+                      "name": "twin",
+                    },
+                    Object {
+                      "name": "twin",
+                    },
+                    Object {
+                      "name": "twin",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      "price": 0,
     },
-    "name": "Sarah Branaghan",
   },
-  Object {
-    "gender": "male",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Daniel Branaghan",
-  },
-  undefined,
-  undefined,
-  undefined,
-  Object {
-    "gender": "female",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Carrie Marchese",
-  },
-  Object {
-    "gender": "male",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Danny Marchese",
-  },
-  Object {
-    "gender": "female",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 2,
-      "twin": 1,
-    },
-    "name": "Hope",
-  },
-  undefined,
-  Object {
-    "gender": "female",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Christa Brickey",
-  },
-  Object {
-    "gender": "female",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Andrea Davis",
-  },
-  Object {
-    "gender": "female",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Kaila",
-  },
-  Object {
-    "gender": "female",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Serena",
-  },
-  Object {
-    "gender": "female",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Sam Knight",
-  },
-  Object {
-    "gender": "male",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Alec Brickey",
-  },
-  Object {
-    "gender": "male",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Travis Davis",
-  },
-  Object {
-    "gender": "male",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Sicquan",
-  },
-  Object {
-    "gender": "male",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Sam DeVine",
-  },
-  Object {
-    "gender": "female",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Sam Donermeyer",
-  },
-  Object {
-    "gender": "female",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Pearl",
-  },
-  Object {
-    "gender": "female",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Molly",
-  },
-  Object {
-    "gender": "female",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Mara",
-  },
-  Object {
-    "gender": "female",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Caroline",
-  },
-  Object {
-    "gender": "female",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Bethany",
-  },
-  undefined,
-  Object {
-    "gender": "male",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Kwinton",
-  },
-  Object {
-    "gender": "male",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Isaac",
-  },
-  Object {
-    "gender": "male",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Deon",
-  },
-  Object {
-    "gender": "male",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Larry",
-  },
-  Object {
-    "gender": "male",
-    "howManyOthersCanShareBed": Object {
-      "king": 2,
-      "queen": 1,
-      "twin": 0,
-    },
-    "name": "Noodle",
-  },
-  undefined,
 ]
 `;

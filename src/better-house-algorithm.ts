@@ -443,5 +443,9 @@ export const getAllPossibleArrangements = ({
 
       return false;
     },
-  });
+  }) as Generator<
+    (Person | undefined)[],
+    (Person | undefined)[],
+    (Person | undefined)[]
+  >;
 };
